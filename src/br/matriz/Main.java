@@ -1,5 +1,8 @@
 package br.matriz;
 
+import br.matriz.concorrente.MultiplicacaoConcorrente;
+import br.matriz.sequencial.MultiplicacaoSequencial;
+
 import java.util.Scanner;
 
 public class Main {
@@ -18,12 +21,24 @@ public class Main {
 
         int tamanhoEntrada = entrada.length();
 
-        String tamanhoMatriz = entrada.substring(0, tamanhoEntrada - 2);
+        String tamanhoMatrizString = entrada.substring(0, tamanhoEntrada - 2);
         String sequencialOuConcorrente = entrada.substring(tamanhoEntrada - 1);
 
-        int tamanhoMatrizInteiro = Integer.parseInt(tamanhoMatriz);
+        int tamanhoMatrizInteiro = Integer.parseInt(tamanhoMatrizString);
 
-        int matriz[][] = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+        int matrizA[][] = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+        int matrizB[][] = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+
+        if (sequencialOuConcorrente.equals("S")) {
+            MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB);
+        } else if (sequencialOuConcorrente.equals("C")) {
+            MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB);
+        } else {
+            System.err.print("Não foi possível realizar a multiplicação das matrizes. Por favor, informe se a multiplicação " +
+                    "será sequencial (S) ou  concorrente (C).");
+
+            System.exit(0);
+        }
     }
 
     private static void validarEspacoEntreDimensaoELetra(String entrada, int tamanhoEntrada) {
@@ -43,6 +58,8 @@ public class Main {
         if (entrada.length() < 3 || entrada.length() > 6) {
             System.err.print("\nSua entrada é inválida. Por favor, informe se a matriz possui dimensões 4, 8, 16, 32, 64, " +
                     "128, 256, 512, 1024, 2048 e se será S ou C. Por exemplo, 1024 C ou 2048 S.");
+
+            System.exit(0);
         }
     }
 
