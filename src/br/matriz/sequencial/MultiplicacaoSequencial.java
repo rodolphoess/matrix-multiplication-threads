@@ -4,6 +4,7 @@ public class MultiplicacaoSequencial {
 
     public static void multiplicarMatrizes(int[][] matrizA, int[][] matrizB) {
 
+        System.out.print("");
     }
 
 }
