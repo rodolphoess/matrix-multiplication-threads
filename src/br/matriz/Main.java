@@ -49,7 +49,7 @@ public class Main {
 
     }
 
-    private static void leituraDeMatriz(int[][] matrizA, String path, int tamanhoMatrizInteiro) {
+    private static void leituraDeMatriz(int[][] matrizA, String path, int tamanhoMatriz) {
         try {
             Scanner scn = new Scanner(new File(path));
 
@@ -57,8 +57,8 @@ public class Main {
                 scn.nextInt();
             }
 
-            for(int i = 0; i < tamanhoMatrizInteiro; i++) {
-                for (int j = 0; j < tamanhoMatrizInteiro; j++) {
+            for(int i = 0; i < tamanhoMatriz; i++) {
+                for (int j = 0; j < tamanhoMatriz; j++) {
                     matrizA[i][j] = scn.nextInt();
                 }
             }
