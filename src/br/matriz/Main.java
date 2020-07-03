@@ -3,6 +3,7 @@ package br.matriz;
 import br.matriz.concorrente.MultiplicacaoConcorrente;
 import br.matriz.sequencial.MultiplicacaoSequencial;
 
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -26,8 +27,14 @@ public class Main {
 
         int tamanhoMatrizInteiro = Integer.parseInt(tamanhoMatrizString);
 
-        int matrizA[][] = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
-        int matrizB[][] = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+        int[][] matrizA = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+        int[][] matrizB = new int[tamanhoMatrizInteiro][tamanhoMatrizInteiro];
+
+        String pathA = "../matrix-multiplication-threads/src/br/matriz/matrizes/A" + tamanhoMatrizString + "x" + tamanhoMatrizString + ".txt";
+        leituraDaMatrizA(matrizA, pathA, tamanhoMatrizInteiro);
+
+        String pathB = "../matrix-multiplication-threads/src/br/matriz/matrizes/B" + tamanhoMatrizString + "x" + tamanhoMatrizString + ".txt";
+        leituraMatrizB(matrizB, pathB, tamanhoMatrizInteiro);
 
         if (sequencialOuConcorrente.equals("S")) {
             MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB);
@@ -39,6 +46,46 @@ public class Main {
 
             System.exit(0);
         }
+
+    }
+
+    private static void leituraMatrizB(int[][] matrizB, String path, int tamanhoMatrizInteiro) {
+        try {
+            Scanner br = new Scanner(new File(path));
+
+            for (int i = 0; i < 2; i++) {
+                br.nextInt();
+            }
+
+            for(int i = 0; i < tamanhoMatrizInteiro; i++) {
+                for (int j = 0; j < tamanhoMatrizInteiro; j++) {
+                    matrizB[i][j] = br.nextInt();
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.print("\nNão foi possível encontrar o arquivo com a matriz B.");
+        }
+    }
+
+    private static void leituraDaMatrizA(int[][] matrizA, String path, int tamanhoMatrizInteiro) {
+        try {
+            Scanner br = new Scanner(new File(path));
+
+            for (int i = 0; i < 2; i++) {
+                br.nextInt();
+            }
+
+            for(int i = 0; i < tamanhoMatrizInteiro; i++) {
+                for (int j = 0; j < tamanhoMatrizInteiro; j++) {
+                    matrizA[i][j] = br.nextInt();
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.print("\nNão foi possível encontrar o arquivo com a matriz A.");
+        }
+
     }
 
     private static void validarEspacoEntreDimensaoELetra(String entrada, int tamanhoEntrada) {
