@@ -21,7 +21,6 @@ public class MultiplicacaoSequencial {
         Long tempoFinal = System.currentTimeMillis();
 
         String path = "../matrix-multiplication-threads/src/br/matriz/resultados/C" + tamanhoMatrizInteiro + "x" + tamanhoMatrizInteiro + "S.txt";
-
         Main.gravarResultadoEmArquivo(matrizC, path);
 
         return tempoFinal - tempoInicial;
