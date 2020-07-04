@@ -36,6 +36,13 @@ public class Main {
         String pathB = "../matrix-multiplication-threads/src/br/matriz/matrizes/B" + tamanhoMatrizString + "x" + tamanhoMatrizString + ".txt";
         leituraDeMatriz(matrizB, pathB, tamanhoMatrizInteiro);
 
+        chamarMultiplicacoes(sequencialOuConcorrente, tamanhoMatrizInteiro, matrizA, matrizB);
+    }
+
+    private static void chamarMultiplicacoes(String sequencialOuConcorrente,
+                                             int tamanhoMatrizInteiro,
+                                             int[][] matrizA,
+                                             int[][] matrizB) {
         if (sequencialOuConcorrente.equals("S")) {
             Long tempoExecucao = MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
 
@@ -54,7 +61,6 @@ public class Main {
 
             System.exit(0);
         }
-
     }
 
     private static void leituraDeMatriz(int[][] matrizA, String path, int tamanhoMatriz) {
@@ -75,8 +81,37 @@ public class Main {
 
         } catch (IOException e) {
             System.err.print("\nNão foi possível encontrar o arquivo com a matriz.");
+
+            System.exit(0);
         }
 
+    }
+
+    public static void gravarResultadoEmArquivo(int[][] matrizC, String path) {
+
+        try {
+            File file = new File(path);
+
+            if (!file.exists())
+                file.createNewFile();
+
+            FileWriter fw = new FileWriter(file);
+
+            for(int i= 0; i < matrizC.length; i++) {
+                for (int j = 0; j < matrizC[i].length; j++) {
+                    fw.append(Integer.toString(matrizC[i][j]));
+                    fw.append(" ");
+                }
+                fw.append("\n");
+            }
+
+            fw.close();
+
+        } catch (IOException e) {
+            System.err.print("Não foi possível gravar o resultado da multiplicação.");
+
+            System.exit(0);
+        }
     }
 
     private static void validarEspacoEntreDimensaoMatrizELetra(String entrada, int tamanhoEntrada) {
