@@ -2,9 +2,13 @@ package br.matriz.concorrente;
 
 public class MultiplicacaoConcorrente {
 
-    public static void multiplicarMatrizes(int[][] matrizA, int[][] matrizB, int tamanhoMatrizInteiro) {
+    private MultiplicacaoConcorrente() { }
+
+    public static Long multiplicarMatrizes(int[][] matrizA, int[][] matrizB, int tamanhoMatrizInteiro) {
 
         System.out.print("");
+
+        return 0L;
     }
 
 }

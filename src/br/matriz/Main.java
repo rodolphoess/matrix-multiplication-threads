@@ -37,16 +37,16 @@ public class Main {
         leituraDeMatriz(matrizB, pathB, tamanhoMatrizInteiro);
 
         if (sequencialOuConcorrente.equals("S")) {
-            MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
+            Long tempoExecucao = MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
 
             System.out.println("\nMultiplicação sequencial concluída e resultado salvo em arquivo .txt na pasta /resultados. O tempo de execução " +
-                    "da multiplicação foi de x,xxx ms.");
+                    "da multiplicação foi de " + tempoExecucao + " ms.");
 
         } else if (sequencialOuConcorrente.equals("C")) {
-            MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
+            Long tempoExecucao = MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
 
             System.out.println("\nMultiplicação concorrente concluída e resultado salvo em arquivo .txt na pasta /resultados. O tempo de execução " +
-                    "da multiplicação foi de x,xxx ms.");
+                    "da multiplicação foi de " + tempoExecucao + " ms.");
 
         } else {
             System.err.print("\nNão foi possível realizar a multiplicação das matrizes. Por favor, informe se a multiplicação " +
