@@ -38,8 +38,16 @@ public class Main {
 
         if (sequencialOuConcorrente.equals("S")) {
             MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
+
+            System.out.println("\nMultiplicação sequencial concluída e resultado salvo em arquivo .txt na pasta /resultados. O tempo de execução " +
+                    "da multiplicação foi de x,xxx ms.");
+
         } else if (sequencialOuConcorrente.equals("C")) {
             MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
+
+            System.out.println("\nMultiplicação concorrente concluída e resultado salvo em arquivo .txt na pasta /resultados. O tempo de execução " +
+                    "da multiplicação foi de x,xxx ms.");
+
         } else {
             System.err.print("\nNão foi possível realizar a multiplicação das matrizes. Por favor, informe se a multiplicação " +
                     "será sequencial (S) ou concorrente (C).");
