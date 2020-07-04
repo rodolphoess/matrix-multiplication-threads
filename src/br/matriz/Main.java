@@ -37,9 +37,9 @@ public class Main {
         leituraDeMatriz(matrizB, pathB, tamanhoMatrizInteiro);
 
         if (sequencialOuConcorrente.equals("S")) {
-            MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB);
+            MultiplicacaoSequencial.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
         } else if (sequencialOuConcorrente.equals("C")) {
-            MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB);
+            MultiplicacaoConcorrente.multiplicarMatrizes(matrizA, matrizB, tamanhoMatrizInteiro);
         } else {
             System.err.print("\nNão foi possível realizar a multiplicação das matrizes. Por favor, informe se a multiplicação " +
                     "será sequencial (S) ou concorrente (C).");
@@ -62,6 +62,8 @@ public class Main {
                     matrizA[i][j] = scn.nextInt();
                 }
             }
+
+            scn.close();
 
         } catch (IOException e) {
             System.err.print("\nNão foi possível encontrar o arquivo com a matriz.");
